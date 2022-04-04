@@ -7,10 +7,27 @@
     <title>Expence Track</title>
 </head>
 <style>
+#main{
+    margin-left: 40%;
+    margin-top: 10%;
+    margin-right: 30%;
+    text-align: center;
+}
+form{
+    height: 250px;
+    width: 400px;
+    border: 1px solid rgb(0, 255, 89);
+}
+#container
+{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+}
     
 </style>
 <body>
-    
+    <div id="main">
     <form>
     <p >Select Month</p>
     <select id="month">
@@ -38,6 +55,7 @@
 
 </form>
 
+</div>
 <div id="container">
 
 
@@ -45,8 +63,8 @@
 </body>
 <script>
 var arrData=[];
-var saving;
 
+document.querySelector('#container');
 document.querySelector("form").addEventListener('submit',Data);
 
 
@@ -64,10 +82,10 @@ month:document.querySelector("#month").value,
 income:document.querySelector("#income").value,
 expence:document.querySelector("#expence").value,
 
-}
+};
 arrData.push(expenceData);
 localStorage.setItem('expence',JSON.stringify(arrData))
-displayData(arrData);
+displayData();
 
 
 }
@@ -87,8 +105,7 @@ function displayData(){
         var saving=document.createElement("p");
         saving.innerText=data.income-data.expence;
         table.append(month,income,expence,saving);
-
-        document.querySelector('#container').append(table);
+        container.append(table);
     });
 }
 </script>
